@@ -42,3 +42,13 @@ body{
     font-weight: bolder;
 }
 
+.fa-star:hover {
+    cursor: pointer;
+}
+
+.fa-star::before{
+    content: '\f005';
+    color: rgb(254, 254, 79);
+    font-size: 50px;
+}
+

@@ -1,7 +1,7 @@
 const stars = document.querySelectorAll('.fa-star-o')
 const selectedRatingValueText = document.querySelector('.selected-rating-value');
 
-let currentTotalSelectedStar = -1;
+let currentTotalSelectedStars = -1;
 
 stars.forEach((starItem, index) => {
     starItem.dataset.rating = index +1;
@@ -14,6 +14,7 @@ function handleMouseOver(event){
     const currentRatingValue = event.target.dataset.rating;
     if(!currentRatingValue) return
     else handleUpdatedRatingState(currentRatingValue);
+    
 }
 
 
@@ -28,9 +29,14 @@ function handleUpdatedRatingState(getCurrentRatingValue){
 }
 
 function handleOnClick(event){
+    const currentRatingValue = event.target.dataset.rating;
+    currentTotalSelectedStars = currentRatingValue;
+    handleUpdatedRatingState(currentTotalSelectedStars)
+    selectedRatingValueText.textContent = currentTotalSelectedStars
 
 }
 
-function handleMouseLeave(event){
+function handleMouseLeave(){
+    handleUpdatedRatingState(currentTotalSelectedStars)
 
 }
