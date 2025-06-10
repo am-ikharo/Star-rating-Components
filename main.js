@@ -1,17 +1,36 @@
-const start = document.querySelectorAll('fa-star-o')
+const stars = document.querySelectorAll('.fa-star-o')
 const selectedRatingValueText = document.querySelector('.selected-rating-value');
 
 let currentTotalSelectedStar = -1;
 
-start.forEach((startItem, index) => {
-    startItem.dataset.rating = index +1;
-    startItem.addEventListener('mouseover', handleMouseOver);
-    startItem.addEventListener('click', handleOnClick);
-    startItem.addEventListener('mouseleave', handleMouseLeave);
+stars.forEach((starItem, index) => {
+    starItem.dataset.rating = index +1;
+    starItem.addEventListener('mouseover', handleMouseOver);
+    starItem.addEventListener('click', handleOnClick);
+    starItem.addEventListener('mouseleave', handleMouseLeave);
 })
 
 function handleMouseOver(event){
-    console.log(event.target.dataset);
+    const currentRatingValue = event.target.dataset.rating;
+    if(!currentRatingValue) return
+    else handleUpdatedRatingState(currentRatingValue);
 }
 
-handleMouseOver();
+
+function handleUpdatedRatingState(getCurrentRatingValue){
+    for(let i=0; i<5; i++) {
+        if(i<getCurrentRatingValue){
+            stars[i].classList.replace('fa-star-o', 'fa-star');
+        }else{
+            stars[i].classList.replace('fa-star', 'fa-star-o');
+        }
+    }
+}
+
+function handleOnClick(event){
+
+}
+
+function handleMouseLeave(event){
+
+}
